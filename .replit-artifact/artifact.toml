@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "SOPLens"
+version = "1.0.0"
+id = "artifacts/soplens"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 19236
+
+[services.development]
+run = "pnpm --filter @workspace/soplens run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/soplens", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/soplens", "run", "serve" ]
+
+[services.env]
+PORT = "19236"
+BASE_PATH = "/"
